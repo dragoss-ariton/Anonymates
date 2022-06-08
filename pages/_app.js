@@ -8,7 +8,7 @@ import { collection, setDoc, doc, serverTimestamp } from "firebase/firestore"
 
 function MyApp({ Component, pageProps }) {
 	const [user, loading] = useAuthState(auth)
-
+	
 	useEffect(() => {
 		if (user) {
 			const c = collection(db, "users")
