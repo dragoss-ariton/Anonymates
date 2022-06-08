@@ -268,7 +268,7 @@ function Sidebar() {
 
           <div className="flex space-x-2" >
           
-            <button onClick={()=>this.operation()} >⠀ID:👁</button>
+            <button onClick={()=>this.operation()} >ID:👁</button>
             {
               
               this.state.showMe?
@@ -321,7 +321,7 @@ function Sidebar() {
         )}  
           
           
-          <div className="flex items-center space-x-2">Eu ({user.email})<UserId2/></div>
+          <div>Eu ({user.email})<UserId2/></div>
         
         </div>
         
