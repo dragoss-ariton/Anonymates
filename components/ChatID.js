@@ -54,7 +54,7 @@ function Chat({ id, users}) {
 				<div className="rounded-full bg-white w-10 h-10 text-gray-900 flex items-center justify-center font-bold">
 					
 					{/* icone do utilizador */}
-					<BsFillPersonFill/>
+					<BsFillPersonFill className="w-10 h10" />
 
 				</div>
 			{/* Por fim mas não menos importante, temos o ID do utilizador (B)*/}

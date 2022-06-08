@@ -293,9 +293,9 @@ function Sidebar() {
 
   return (
 
-    <div className="h-screen">
+    <div className="h-screen min-w-fit max-w-screen-2xl">
       
-      <header className="flex items-center sticky top-0 z-10 h-20 p-5 bg-blue-900">
+      <header className="flex items-center sticky top-0 z-10 h-20 p-5 bg-blue-900 ">
         
         <div className="flex items-center space-x-2">
           
@@ -307,7 +307,7 @@ function Sidebar() {
           
           />
           
-          <div>Eu ({user.email})<UserId2/></div>
+          <div>Eu⠀({user.email})⠀⠀⠀⠀⠀⠀⠀⠀⠀<UserId2/></div>
         
         </div>
         
