@@ -298,28 +298,14 @@ function Sidebar() {
       <header className="flex items-center sticky top-0 z-10 h-20 p-5 bg-blue-900">
         
         <div className="flex items-center space-x-2">
-        {user ? (
-
-          <img
-                      
-              src={user.photoURL}
-                      
-              className="rounded-full bg-white w-10 h-10 object-contain"
-                    
-          />
-
-        ) : (
-
-          //caso não sejam encontrados os dados irá aparecer uma moldura com a inicial do email
-          <div className="rounded-full bg-white w-10 h-10 text-gray-900 flex items-center justify-center font-bold">
-            
-            {/*entre as chavetas encontramos um 0 pois é considerado o primeiro numero */}
-            <span>{user.email[0]}</span>
-
-        </div>
-
-        )}  
           
+          <img
+            
+            src={user.photoURL}
+            
+            className="rounded-full bg-white w-10 h-10 object-contain"
+          
+          />
           
           <div>Eu ({user.email})<UserId2/></div>
         
@@ -338,7 +324,7 @@ function Sidebar() {
             
             <AiOutlineUsergroupAdd className="w-8 h-8" />
             
-            <button className="text-sm">Novo Chat(Email)</button>
+            <button className="text-sm">(Email)</button>
           
           </div>
           
@@ -353,7 +339,7 @@ function Sidebar() {
            
             <AiOutlineUsergroupAdd className="w-8 h-8" />
            
-            <button className="text-sm">Novo Chat (ID)</button>
+            <button className="text-sm">(ID)</button>
           
           </div>
           
