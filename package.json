@@ -1,0 +1,33 @@
+{
+  "name": "chat-app-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "email-validator": "^2.0.4",
+    "firebase": "^9.8.1",
+    "moment": "^2.29.3",
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "18.1.0",
+    "react-firebase-hooks": "^5.0.3",
+    "react-icons": "^4.3.1",
+    "react-id-generator": "^3.0.2",
+    "sass": "^1.51.0",
+    "timeago-react": "^3.0.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.15.0",
+    "eslint-config-next": "12.1.6",
+    "postcss": "^8.4.13",
+    "tailwindcss": "^3.0.24"
+  }
+}
