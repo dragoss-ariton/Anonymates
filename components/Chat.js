@@ -13,39 +13,39 @@ import getRecipientEmail from "./utils/getRecipientEmail"
 //------------------------------------------------------------------------------------------------------------------
 
 //Função do chat privado 
-//Recebe o id e os utilizadores da base de dados para mostrar todos os utilizadores
+//Recebe o id e os utilizadores por parametro
 function Chat({ id, users }) {
 
 	//O Router do react é a biblioteca de roteamento do React.js que mantém a interface do utilizador sicronizado 
-	//com o valor atual da URL acessada.
+	//com o valor do URL
 	const router = useRouter()
 
 	//Cria a variavel q, para guardar os dados de uma consulta à base de dados na coleção users
 	const q = query
 	(
-		//Nessa consulta, vão ser retirados os emails que já fizeram login pelo menos uma vez
+		//Nessa consulta, vão ser guardados os emails que já fizeram login pelo menos uma vez na aplicação
 		collection(db, "users"),
 
-		//useAuthState retorna um array de 3, o primeiro é o utilizador, o segundo é o loading e o terceiro é o erro
-		//no nosso caso como queremos guardar os emails vamos por o 0 no useAuthState
+		//Na função getRecipientEmail inserimos os utilizadores que obtivemos nos parametros e ainda o email
+		//que temos na base de dados useAuthState retorna um array de 3, o primeiro é o utilizador, o segundo  
+		//é o loading e o terceiro é o erro no nosso caso como queremos guardar o email vamos por 0 no useAuthState
 		where("email", "==", getRecipientEmail(users, useAuthState(auth)[0]))
 	)
 	
-	//Guarda os utilizadores para as proximas instruções
+	//Guarda os resultados da consulta em outra variável
 	const [recipientsSnapshot] = useCollection(q)
 
 	//Aqui irão ser guardados os emails dos utilizadores
-	//useAuthState retorna um array de 3, o primeiro é o utilizador, o segundo é o loading e o terceiro é o erro
 	const recipientEmail = getRecipientEmail(users, useAuthState(auth)[0])
 
-	//Aqui irão ser guardados os dados dos outros utilizadores, por exemplo o id
+	//Aqui irão ser obtidos os dados do utilizador da base de dados
 	const recipient = recipientsSnapshot?.docs?.[0]?.data()
 	
 	//Esta classe permite ao utilizador (A) abrir a conversa para falar com o utilizador(B)
 	const enterChat = () => {
 
 		//Recorremos ao useRouter para usar o router do next.js
-		//Aqui o router.push permite como o próprio nome diz, puxar a conversa, indicando o chat e o id 
+		//Aqui o router.push permite como o próprio nome diz, empurrar a conversa, indicando a pasta chat e o id 
 		router.push("/chat/" + id)
 	}
 	
@@ -54,6 +54,7 @@ function Chat({ id, users }) {
 
 		//Todo o css foi editado com o tailwind.css 
 		<div
+		
 			//Se passarmos o rato por cima mostra como seria escrito no css normal
 			className="flex items-center cursor-pointer break-words space-x-2 mb-2"
 			
@@ -90,7 +91,7 @@ function Chat({ id, users }) {
 
 			)}
 
-			{/* Por fim mas não menos importante, temos o email dos utilizadores (B) que vai aparecer ao lado da moldura circular*/}
+			{/* Por fim mas não menos importante, temos o email dos utilizadores (B) que vão aparecer ao lado da moldura circular*/}
 			<span>{recipientEmail}</span>
 
 		</div>

@@ -375,7 +375,7 @@ function Sidebar() {
         {chatsSnapshot?.docs.map((chat) => 
         {
           
-          return <Chat key={chat.id} id={chat.id} users={chat.data().users} UID={user.uid}/>;
+          return <Chat key={chat.id} id={chat.id} users={chat.data().users}/>;
         
         })}
         
