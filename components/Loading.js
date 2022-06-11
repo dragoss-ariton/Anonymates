@@ -7,7 +7,7 @@ import styles from "../styles/Loading.module.scss"
 
 //--------------------------------------------------------------------------------------------------------------------------------
 
-//Aqui vemos a função do loadind
+//Aqui vemos a função do loading
 function Loading() {
 
 	return (

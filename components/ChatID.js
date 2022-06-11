@@ -36,6 +36,7 @@ function Chat({ id, users}) {
 	if(userLoggedIn.uid === users[1]) {
 		return(   
 		<span>Utilizador({users[0]})</span>)};
+		
 	if(userLoggedIn.uid === users[0]){
 		return(
 			<span>Utilizador({users[1]})</span>)};

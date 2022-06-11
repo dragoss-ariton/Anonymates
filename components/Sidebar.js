@@ -11,7 +11,7 @@ import { db, auth } from "../firebase";
 import { collection, addDoc, where, query, orderBy, serverTimestamp, onSnapshot } from "firebase/firestore";
 import moment from "moment";
 
-//importação das funções utilizadas
+//importação das funções criadas
 import Chat from "./Chat";
 import ChatID from "./ChatID";
 
@@ -161,7 +161,7 @@ function Sidebar() {
       } else {
 
         //caso as validações não tenham dado conforme o requerido aparecerá uma mensagem de id inválido
-        alert("Email inválido");
+        alert("ID inválido");
       
       }
 
@@ -293,8 +293,10 @@ function Sidebar() {
 
   return (
 
+    //css editado com o tailwind css
     <div className="h-screen min-w-fit max-w-screen-2xl">
       
+      {/* Edição do cabeçalho */}
       <header className="flex items-center sticky top-0 z-10 h-20 p-5 bg-blue-900 ">
         
         <div className="flex items-center space-x-2">
@@ -366,7 +368,6 @@ function Sidebar() {
       <div className="flex flex-col p-5">
 
         <ChatRoom />
-
         <div className="">Conhecidos:</div>
         
         <div>⠀</div>
@@ -570,7 +571,7 @@ function ChatMessage(props) {
 
           <div className="flex space-x-2">
 
-            <button onClick={()=>this.operation()}>⠀⠀User:👁</button>
+            <button onClick={()=>this.operation()}>⠀⠀Utilizador:👁⠀</button>
 
             {
 

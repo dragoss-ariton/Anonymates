@@ -1,6 +1,6 @@
-//--------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------Chat-------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------Chat-----------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
 
 //importação dos pacotes necessários para este código
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -10,13 +10,14 @@ import { collection, where, query } from "firebase/firestore"
 import { useRouter } from "next/router"
 import getRecipientEmail from "./utils/getRecipientEmail"
 
-//--------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
 
 //Função do chat privado 
 //Recebe o id e os utilizadores da base de dados para mostrar todos os utilizadores
 function Chat({ id, users }) {
 
-	//...
+	//O Router do react é a biblioteca de roteamento do React.js que mantém a interface do utilizador sicronizado 
+	//com o valor atual da URL acessada.
 	const router = useRouter()
 
 	//Cria a variavel q, para guardar os dados de uma consulta à base de dados na coleção users
