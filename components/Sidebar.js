@@ -297,7 +297,7 @@ function Sidebar() {
     <div className="h-screen min-w-fit max-w-screen-2xl">
       
       {/* Edição do cabeçalho */}
-      <header className="flex items-center sticky top-0 z-10 h-20 p-5 bg-blue-900 ">
+      <header className="flex items-center sticky top-0 z-10 h-20 p-5 bg-blue-800 ">
         
         <div className="flex items-center space-x-2">
           
@@ -454,9 +454,9 @@ function PublicChat() {
 
   return (
 
-    <div className="grid">
+    <div className="grid ">
 
-      <header className="p-5 flex justify-between bg-blue-900">
+      <header className="p-5 rounded-3xl flex justify-between bg-blue-800">
 
         <div className="flex items-center space-x-2">
 
@@ -496,7 +496,7 @@ function PublicChat() {
 
       </div>
 
-      <div className="flex items-center justify-around gap-4 p-5 bg-blue-900">
+      <div className="flex items-center rounded-3xl justify-around gap-4 p-5 bg-blue-800">
         
         {/* form box */}
         <form

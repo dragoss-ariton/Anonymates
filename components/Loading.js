@@ -7,7 +7,7 @@ import styles from "../styles/Loading.module.scss"
 
 //--------------------------------------------------------------------------------------------------------------------------------
 
-//Aqui vemos a função do loading
+//Função do loading
 function Loading() {
 
 	return (
@@ -15,7 +15,7 @@ function Loading() {
 		//Se passarmos o rato por cima mostra como seria escrito no css normal
 		<div className="flex justify-center w-full h-full fixed">
 			
-			{/* Para o loading ja foi criado um ficheiro css pois ja era algum codigo*/}
+			{/* Para o loading ja foi criado um ficheiro css*/}
 			<div className={styles.spinner}>
 
 				{/* Aqui temos os 5 retangulos que aparecem nos momentos de carregamento*/}

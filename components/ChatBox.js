@@ -8,16 +8,7 @@ import { IoIosArrowBack, IoMdSend } from "react-icons/io"
 import { useRouter } from "next/router"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth, db } from "../firebase"
-import {
-	query,
-	addDoc,
-	setDoc,
-	doc,
-	where,
-	collection,
-	orderBy,
-	serverTimestamp,
-} from "firebase/firestore"
+import {query, addDoc, setDoc, doc, where, collection, orderBy, serverTimestamp, } from "firebase/firestore"
 import { useCollection } from "react-firebase-hooks/firestore"
 import getRecipientEmail from "../components/utils/getRecipientEmail"
 import TimeAgo from "timeago-react"
@@ -26,12 +17,22 @@ import Message from "./Message"
 
 //--------------------------------------------------------------------------------------------------------------------------------
 
+//Função ChatBox qu recebe por parametro o chat e as mensagens
 const ChatBox = ({ chat, messages }) => {
+
+	//Utiliza-se o useRef(null) porque a referência não é definida até que a função retorne e o conteúdo seja renderizado.
 	const endOfMessagesRef = useRef(null)
 
+	//O Router do react é a biblioteca de roteamento do React.js que mantém a interface do utilizador sicronizado 
+	//com o valor do URL
 	const router = useRouter()
+
+	//Criação da variavel input e deixamos vazia com o useState
 	const [input, setInput] = useState()
+
+	//Criação da varivel user para guardar
 	const [user] = useAuthState(auth)
+	
 
 	const sendMessage = (e) => {
 		e.preventDefault()

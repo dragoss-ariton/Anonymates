@@ -16,7 +16,7 @@ export default function Home() {
   		
 		  <div>
 			
-			{/* Cabeçalho do separador */}
+			{/* Identificação do separador */}
   			<Head>
 
 				{/* Nome da aplicação que vai aparecer no separador */}

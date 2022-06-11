@@ -2,7 +2,7 @@
 //---------------------------------------------------------Chat-----------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------
 
-//importação dos pacotes necessários para este código
+//importação dos funções necessárias para este código
 import { useAuthState } from "react-firebase-hooks/auth"
 import { db, auth } from "../firebase"
 import { useCollection } from "react-firebase-hooks/firestore"
