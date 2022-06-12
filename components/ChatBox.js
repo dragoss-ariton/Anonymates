@@ -115,7 +115,7 @@ const ChatBox = ({ chat, messages }) => {
 
 	return (
 		<div className="grid">
-			<header className="flex items-center sticky bg-blue-900 top-0 z-10 justify-between h-20 p-5">
+			<header className="flex items-center sticky bg-blue-800 top-0 z-10 justify-between h-20 p-5">
 				<div onClick={() => router.push("/")}>
 					<IoIosArrowBack className="w-8 h-8 cursor-pointer" />
 				</div>
@@ -166,7 +166,7 @@ const ChatBox = ({ chat, messages }) => {
 			</div>
 
 			{/* input container */}
-			<div className="flex items-center justify-around gap-4 p-3 bg-blue-900">
+			<div className="flex items-center justify-around gap-4 p-3 bg-blue-800">
 			
 
 				<form className="flex items-center w-full space-x-4">
