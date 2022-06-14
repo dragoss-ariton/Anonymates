@@ -625,7 +625,7 @@ function ChatMessage(props) {
       
       ) : (
         
-        <div className="bg-white rounded-fulls text-gray-900 text-left" key={id}>
+        <div className="bg-white rounded-full text-gray-900 text-left" key={id}>
             
             ⠀<UserId/>
           
