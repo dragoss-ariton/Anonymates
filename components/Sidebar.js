@@ -1,8 +1,8 @@
-//--------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------Sidebar----------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------Sidebar--------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
 
-//importação de funções do firebase/react/node necessários para este código
+//importação de funções do firebase/react/node necessárias para este código
 import React, { useState, useEffect, Component } from "react";
 import * as EmailValidator from "email-validator";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -11,7 +11,7 @@ import { db, auth } from "../firebase";
 import { collection, addDoc, where, query, orderBy, serverTimestamp, onSnapshot } from "firebase/firestore";
 import moment from "moment";
 
-//importação das funções criadas
+//importação de funções criadas
 import Chat from "./Chat";
 import ChatID from "./ChatID";
 
@@ -22,16 +22,15 @@ import { IoMdSend } from "react-icons/io";
 import { CgMoreO } from "react-icons/cg"
 import { BiDoorOpen } from "react-icons/bi"
 
-//--------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
 
-//Função responsável pela maioria do visual da aplicação
+//Função responsável pela apresentação do menu
 function Sidebar() {
   
-  //Preenche a variavel user com os dados do Auth
-  //o auth contem os dados da base de dados
+  //Preenche a variavel user com os dados da base de dados
   const [user] = useAuthState(auth);
 
-  //realização de uma consulta para obter os chats do utilizador
+  //realização de uma consulta para obter as conversas do utilizador
   const q = query(
     
     //entra na coleção chats
@@ -626,7 +625,7 @@ function ChatMessage(props) {
       
       ) : (
         
-        <div className="bg-white rounded-full text-gray-900 text-left" key={id}>
+        <div className="bg-white rounded-fulls text-gray-900 text-left" key={id}>
             
             ⠀<UserId/>
           
@@ -654,4 +653,5 @@ function ChatMessage(props) {
   
 }
 
+//exportação da função
 export default Sidebar;

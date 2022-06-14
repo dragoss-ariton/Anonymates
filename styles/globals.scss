@@ -1,45 +1,68 @@
+//------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------Globals.scss-------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
+
 //Ligação com o Tailwind.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
+//------------------------------------------------------------------------------------------------------------------
+
 
 //edição dos corpos das páginas
 body {
-  padding: 0;
-  margin: 0;
+
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #4230e2;
+
   color: white;
   
 }
 
 //edição das grelhas
 .grid {
-  display: grid;
+
   grid-template-rows: auto 1fr auto;
+
   grid-template-columns: 1fr;
+
   height: 100vh;
 
 }
+
+//edição do tamanho da scrollbar
 ::-webkit-scrollbar {
+
     width: 15px;
+
     height: 20px;
+
   }
 
+  //edição do fundo da scrollbar
 ::-webkit-scrollbar-track {
+
     border-radius: 100vh;
+
     background: #3627b6;
+
 }
 
+//edição do formato da scrollbar
 ::-webkit-scrollbar-thumb {
+
     background:#585ada;
+
     border-radius: 100vh;
+
     border: 2px solid #000000;
+
 }
 
+//edição da scrollbar quando tem o rato em cima
 ::-webkit-scrollbar-thumb:hover {
+
     background: #271c9c;
 }

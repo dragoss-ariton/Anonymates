@@ -2,12 +2,14 @@
 //---------------------------------------------------------Chat-----------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------
 
-//importação dos funções necessárias para este código
+//importação de funções do firebase/next.js/react necessárias para este código
 import { useAuthState } from "react-firebase-hooks/auth"
 import { db, auth } from "../firebase"
 import { useCollection } from "react-firebase-hooks/firestore"
 import { collection, where, query } from "firebase/firestore"
 import { useRouter } from "next/router"
+
+//importação de funções necessárias para este código
 import getRecipientEmail from "./utils/getRecipientEmail"
 
 //------------------------------------------------------------------------------------------------------------------
@@ -82,7 +84,8 @@ function Chat({ id, users }) {
 			) : (
 
 				//caso não sejam encontrados os dados irá aparecer uma moldura com a inicial do email
-				<div className="rounded-full bg-white w-10 h-10 text-gray-900 flex items-center justify-center font-bold">
+				<div className="rounded-full bg-white w-10 h-10 text-gray-900 flex items-center 
+				justify-center font-bold">
 					
 					{/*entre as chavetas encontramos um 0 pois é considerado o primeiro numero */}
 					<span>{recipientEmail[0]}</span>
@@ -91,7 +94,8 @@ function Chat({ id, users }) {
 
 			)}
 
-			{/* Por fim mas não menos importante, temos o email dos utilizadores (B) que vão aparecer ao lado da moldura circular*/}
+			{/* Por fim mas não menos importante, temos o email dos utilizadores (B) que vão aparecer ao 
+			lado da moldura circular*/}
 			<span>{recipientEmail}</span>
 
 		</div>
