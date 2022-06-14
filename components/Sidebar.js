@@ -178,53 +178,67 @@ function Sidebar() {
     //função responsável pelo botão que mostra/esconde elementos
     class ChatRoom extends Component{
 
-      
+      //O construtor serve para criar e inicializar o objeto criado a partir da classe.
       constructor(){
       
-      
+      //o super terá de ser atribuido antes do this para não ocorrer um erro de referência
       super()
       
-      
+      //o valor começa como falso para não exibir o chat publico
+      //quando o utilizador acessar a página principal
       this.state={
         showMe: false
       }
 
     }
 
+    //esta função permite mudar o valor para verdadeiro ou falso
+    //dependendo do valor atual
     operation()
+    
     {
-          
+      
+      //Atualização do valor 
       this.setState({
+        
+        //para o contrário do que está no momento
         showMe:!this.state.showMe
       })
     
     }
 
+    //renderiza os elementos
     render(){
       
       return(
         
         <div>
 
+          {/* ao clicar nesta divisão ira executar a função para alterar o valor do this */}
           <div className="flex space-x-2" onClick={()=>this.operation()}>
           
-          <CgMoreO className=" cursor-pointer w-10 h-10 space-y-2"/><button> Chat Publico </button></div>
+          {/* icone e respetivas edições */}
+          <CgMoreO className=" cursor-pointer w-10 h-10 space-y-2"/>
+          
+          {/* Botão chat publico */}
+          <button> Chat Publico </button></div>
           
           <div>⠀</div>
           
-          {
-            this.state.showMe?
+          {/* Se o valor for verdadeiro */}
+          { this.state.showMe ? (
             
             <div className="space-y-2">
               
-              {/* Chamada do chat publico */}
+              {/* Então irá executar a função do chat publico */}
               <PublicChat />
 
               <div>⠀</div>
           
-          </div>
-
-          :null
+            </div>
+          
+          // senão fica vazio
+          ) : (null)
 
           }
 
@@ -267,16 +281,19 @@ function Sidebar() {
 
           <div className="flex space-x-2" >
           
-            <button onClick={()=>this.operation()} >ID:👁</button>
-            {
+            <button onClick={()=>this.operation()} >ID:</button>
+            
+            {this.state.showMe?( 
               
-              this.state.showMe?
-              
-              <div>
+              <div className="cursor-pointer" onClick={()=>this.operation()}>
                 {user.uid}⠀⠀
               </div>
 
-              :null
+            ):(
+              
+              <div className="cursor-pointer" onClick={()=>this.operation()}>👁</div>
+              
+            )
 
             }
 
@@ -570,20 +587,23 @@ function ChatMessage(props) {
 
           <div className="flex space-x-2">
 
-            <button onClick={()=>this.operation()}>⠀⠀Utilizador:👁⠀</button>
+            <button onClick={()=>this.operation()}>⠀⠀Utilizador:</button>
 
-            {
+            {this.state.showMe?(
 
-              this.state.showMe?
-
-              <div>
+              <div className="cursor-pointer" onClick={()=>this.operation()}>
                 {props.message.uid}⠀⠀
               </div>
 
-              :null
+            ):(
 
+              <div className="cursor-pointer" onClick={()=>this.operation()}>⠀👁⠀</div>
+              
+            
+            )
+            
             }
-
+            <div>⠀</div>
           </div>
 
         </div>
