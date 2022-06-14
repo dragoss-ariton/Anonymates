@@ -285,7 +285,7 @@ function Sidebar() {
             
             {this.state.showMe?( 
               
-              <div className="cursor-pointer" onClick={()=>this.operation()}>
+              <div>
                 {user.uid}⠀⠀
               </div>
 
@@ -591,7 +591,7 @@ function ChatMessage(props) {
 
             {this.state.showMe?(
 
-              <div className="cursor-pointer" onClick={()=>this.operation()}>
+              <div >
                 {props.message.uid}⠀⠀
               </div>
 
