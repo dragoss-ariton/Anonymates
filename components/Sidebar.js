@@ -250,10 +250,10 @@ function Sidebar() {
 
   }
 
-  //Função responsável por esconder/mostrar texro
+  //Função responsável por esconder/mostrar texto
   class UserId2 extends Component{
 
-    //O construtor serve para criar e inicializar o objeto criado a partir da classe.
+    //O construtor serve para criar e inicializar o objeto criado a partir da classe
     constructor(){
     
       //o super terá de ser atribuido antes do this para não ocorrer um erro de referência
@@ -526,39 +526,42 @@ function PublicChat() {
 
     <div className="grid ">
 
+      {/* Cabeçalho do chat publico */}
       <header className="p-5 rounded-3xl flex justify-between bg-blue-800">
 
         <div className="flex items-center space-x-2">
 
         {/* Criação de um ícone */}
         <BsChatLeftTextFill className="w-6 h-6"/>
-          <h1 className="text-sm font-semibold">Chat Publico</h1>
+
+          {/* Identificação da divisão */}
+          <h1 className="text-sm font-semibold">Chat público</h1>
 
         </div>
 
-        <div className="flex items-center space-x-4">
-
-          <div className="flex items-center space-x-2">
-
-          </div>
-
-        </div>
-
+      {/* Fim do cabeçalho */}
       </header>
 
-      {/* msg container */}
+      {/* Divisão onde irão aparecer as mensagens */}
       <div className="overflow-y-scroll flex flex-col p-5">
 
+        {/* para isso irá ser feita uma consulta à base de dados */}
         {data.map((msg) => (
 
+          //E irá executar a função chat message com os dados das mensagens
           <ChatMessage
+
+            //das quais o id da mensagem
             key={msg.id}
+
+            //e o texto
             message={{
               ...msg,
               timestamp: msg.timestamp?.toDate().getTime(),
               
             }}
-
+            
+            //e irá guardar o utilizador
             user={msg.email}
 
           />
@@ -566,33 +569,52 @@ function PublicChat() {
         ))}
 
       </div>
-
+      
+      {/* Para mandar mensagem*/}
       <div className="flex items-center rounded-3xl justify-around gap-4 p-5 bg-blue-800">
         
-        {/* form box */}
+        {/* para isso foi criado um formulário */}
         <form
 
+          //que ao submeter irá ser executada a função sendmessage
           onSubmit={sendMessage}
-
+          
+          //respetivas edições desta divisão
           className="flex items-center w-full space-x-4"
 
         >
+
+          {/* Input da mensagem */}
           <input
 
+            //este input vai ser do tipo de texto
             type="text"
-
+            
+            //vai guardar o texto do utilizador
             value={formValue}
 
+            //antes do utilizador escrever a mensagem irá aparecer no input 
+            //para o utilizador escrever uma mensagem
             placeholder="Escreva uma mensagem..."
 
+            //ao enviar a mensagem o input volta a estar vazio 
             onChange={(e) => setFormValue(e.target.value)}
 
+            //Edição do input
             className="outline-0 border-0 rounded-3xl p-3 text-gray-900 w-full"
 
           />
           
-          <button type="submit" disabled={!formValue}>
+          {/* botão para mandar a mensagem */}
+          <button 
+            
+            //este botão é do tipo submit
+            type="submit" 
+            
+            //e fica destivado até o utilizador escrever algo
+            disabled={!formValue}>
 
+            {/* Icone do botão */}
             <IoMdSend className="w-8 h-8" />
 
           </button>
@@ -607,33 +629,47 @@ function PublicChat() {
 
 }
 
+//Função chatMessage
 function ChatMessage(props) {
 
+  //atribui os valores às variáveis criadas com o parametro recebido
   const { id, text, timestamp, email} = props.message;
 
+  //guarda a autenticação do utilizador
   const [userLoggedIn] = useAuthState(auth);
 
+  //Função responsável por esconder/mostrar texto
   class UserId extends Component{
-
+    
+    //O construtor serve para criar e inicializar o objeto criado a partir da classe
     constructor(){
-
+      
+      //o super terá de ser atribuido antes do this para não ocorrer um erro de referência
       super()
 
+      //o valor começa como falso para não exibir o id do utilizador
+      //quando o utilizador acessar a página principal
       this.state={
         showMe: false
       }
 
     }
 
+    //esta função permite mudar o valor para verdadeiro ou falso
+    //dependendo do valor atual
     operation()
     {
 
+      //Atualização do valor
       this.setState({
+
+        //para o contrário do que está no momento
         showMe:!this.state.showMe
       })
 
     }
 
+    //renderiza os elementos
     render(){
 
       return(
@@ -642,28 +678,33 @@ function ChatMessage(props) {
 
           <div className="flex space-x-2">
 
+            {/* ao clicar nesta divisão ira executar a função para alterar o valor do this */}
             <button onClick={()=>this.operation()}>⠀⠀Utilizador:</button>
 
+            {/* Se o valor for verdadeiro */}
             {this.state.showMe?(
 
+              // Então irá executar a função do chat publico 
               <div >
                 {props.message.uid}⠀⠀
               </div>
 
             ):(
 
+              // senão mostra o olho para a revelação do id
               <div className="cursor-pointer" onClick={()=>this.operation()}>⠀👁⠀</div>
               
-            
             )
             
             }
             <div>⠀</div>
+
           </div>
 
         </div>
 
       )
+
     }
 
   }
