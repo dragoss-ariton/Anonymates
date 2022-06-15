@@ -253,26 +253,36 @@ function Sidebar() {
   //Função responsável por esconder/mostrar texro
   class UserId2 extends Component{
 
+    //O construtor serve para criar e inicializar o objeto criado a partir da classe.
     constructor(){
     
+      //o super terá de ser atribuido antes do this para não ocorrer um erro de referência
       super()
-    
+      
+      //o valor começa como falso para não exibir o id do utilizador
+      //quando o utilizador acessar a página principal
       this.state={
         showMe: false
       }
     
     }
     
+    //esta função permite mudar o valor para verdadeiro ou falso
+    //dependendo do valor atual
     operation()
     
     {
       
+      //Atualização do valor 
       this.setState({
+
+        //para o contrário do que está no momento
         showMe:!this.state.showMe
       })
 
     }
 
+    //renderiza os elementos
     render(){
 
       return(
@@ -280,17 +290,23 @@ function Sidebar() {
         <div>
 
           <div className="flex space-x-2" >
-          
+
+            {/* ao clicar nesta divisão ira executar a função para alterar o valor do this */}
             <button onClick={()=>this.operation()} >ID:</button>
             
+            {/* Se o valor for verdadeiro */}
             {this.state.showMe?( 
               
               <div>
+
+                {/* Então irá executar a função do chat publico */}
                 {user.uid}⠀⠀
+              
               </div>
 
             ):(
-              
+
+              // senão mostra o olho para a revelação do id
               <div className="cursor-pointer" onClick={()=>this.operation()}>👁</div>
               
             )
@@ -315,20 +331,25 @@ function Sidebar() {
       {/* Edição do cabeçalho */}
       <header className="flex items-center sticky top-0 z-10 h-20 p-5 bg-blue-800 ">
         
+        {/* Edição da posição da moldura */}
         <div className="flex items-center space-x-2">
           
           <img
             
+            //exibe a imagem do utilizador
             src={user.photoURL}
             
+            //edita a imagem para aparecer numa moldura circular
             className="rounded-full bg-white w-10 h-10 object-contain"
           
           />
           
+          {/* Exibição do email, e do id através da função */}
           <div>Eu⠀({user.email})⠀⠀⠀⠀⠀⠀⠀⠀⠀<UserId2/></div>
         
         </div>
         
+        {/* edição da posição dos botões */}
         <div className="flex items-center justify-end  relative flex-1 ">
           
           {/* Novo chat através do email*/}  
@@ -336,10 +357,12 @@ function Sidebar() {
             
             className="flex items-center space-x-1 cursor-pointer w-fit p-5"
             
+            //ao clicar irá ser executada a função createChat
             onClick={createChat}
           
           >
             
+            {/* Icone usado para o botão */}
             <AiOutlineUsergroupAdd className="w-8 h-8" />
             
             <button className="text-sm">(Email)</button>
@@ -351,10 +374,12 @@ function Sidebar() {
             
             className="flex items-center space-x-1 cursor-pointer w-fit p-5"
             
+            //ao clicar irá ser executada a função createChatID
             onClick={createChatID}
           
           >
            
+            {/* Icone usado para o botão */}
             <AiOutlineUsergroupAdd className="w-8 h-8" />
            
             <button className="text-sm">(ID)</button>
@@ -363,51 +388,69 @@ function Sidebar() {
           
           {/* Sair da conta */}
           <div 
-          
+
             className="flex items-center space-x-1 cursor-pointer w-fit p-5" 
-          
+            
+            //ao clicar irá ser executada a função de signOut
             onClick={() => auth.signOut()}
           
           >
-            
+            {/* Exibição do ícone */}
             <BiDoorOpen className="w-8 h-8"/>
-            
+
             <button className="text-sm cursor-pointer">Sair</button>
           
           </div>
         
         </div>
-      
+        
+        {/* Fim do cabeçalho */}
       </header>
 
       {/* Lista dos utilizadores */}
       <div className="flex flex-col p-5">
 
+        {/* Execução da função ChatRoom */}
         <ChatRoom />
-        <div className="">Conhecidos:</div>
+
+        {/* Divisão dos conhecidos */}
+        <div>Conhecidos:
         
+        {/* Criação de um div para ajustar mellhor o texto*/}
         <div>⠀</div>
 
+        {/* Procura pelos chats privados com conhecidos do utilizador */}
         {chatsSnapshot?.docs.map((chat) => 
+        
         {
-          
+
+          //Listagem dos chats com conhecidos
           return <Chat key={chat.id} id={chat.id} users={chat.data().users}/>;
         
         })}
-        
-        <div>⠀</div>
 
-        <div className="">Desconhecidos:</div>
+        </div>
 
         <div>⠀</div>
 
+        {/* Divisão dos desconhecidos */}
+        <div>Desconhecidos:
+
+        {/* Criação de um div para ajustar mellhor o texto*/}
+        <div>⠀</div>
+
+        {/* Procura pelos chats privados com desconhecidos do utilizador */}
         {ANchats?.docs.map((ANchat) => 
+        
         {
           
+          //Listagem dos chats com desconhecidos
           return <ChatID key={ANchat.id} id={ANchat.id} users={ANchat.data().users} />;
         
         })}
-
+        
+        </div>
+        
         <div>⠀</div>
 
       </div>
@@ -418,48 +461,59 @@ function Sidebar() {
 
 }
 
+//Função do chat público
 function PublicChat() {
 
+  //criação da variavel data
   const [data, setData] = useState([]);
   
+  //cria a variável user para guardar a autenticação
   const [user] = useAuthState(auth);
   
+  //usa-se o useeffect pois pode não retornar nada
   useEffect(() => {
     
+    //guarda-se na variavel q a altura em que as mensagens foram enviadas
     const q = query(collection(db, "messages"), orderBy("timestamp", "asc"));
     
+    //criação da variável unsub para atualizar a data 
     const unsub = onSnapshot(q, (snapshot) => {
-      
+
+      //ou seja cada vez que o conteudo é alterado o onSnapShot é executado de novo
       setData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     
     });
     
+    //retorna a variável unsub
     return unsub;
   
   }, []);
 
-  
+  //criação da variável formValue
   const [formValue, setFormValue] = useState("");
 
+  //cria a variavel para mandar mensagem
   const sendMessage = async (e) => {
-    
+
+    //Cancela o evento se for der para cancelar, sem parar a propagação do mesmo
     e.preventDefault();
     
-    const {photoURL, email} = auth.currentUser;
+    //obtem dados do utilizador
     
     
+    //tenta adicionar os dados necessários na base de dados
     try {
       
       await addDoc(collection(db, "messages"), {
         text: formValue,
         uid: user.uid,
-        photoURL,
-        email,
         timestamp: serverTimestamp(),
       });
 
+      //limpa o input
       setFormValue("");
-
+      
+      // caso não dê certo irá aparecer uma mensagem de erro na consola
     } catch (err) {
       
       console.log("Connection db faild", err);
@@ -476,6 +530,7 @@ function PublicChat() {
 
         <div className="flex items-center space-x-2">
 
+        {/* Criação de um ícone */}
         <BsChatLeftTextFill className="w-6 h-6"/>
           <h1 className="text-sm font-semibold">Chat Publico</h1>
 

@@ -78,16 +78,13 @@ const ChatBoxID = ({ chat, messages }) => {
 		addDoc(messageCollection, {
 
 			//vai atualizar o email, como é o mesmo não vai haver alteração
-			user: user.email,
+			user: user.uid,
 
 			//vai atualizar o tempo
 			timestamp: serverTimestamp(),
 
 			//vai inserir a mensagem na base de dados
 			text: input,
-
-			//vai guardar a foto
-			photoURL: user.photoURL,
 
 		})
 

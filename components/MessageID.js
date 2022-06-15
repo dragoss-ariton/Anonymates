@@ -20,7 +20,7 @@ function Message({ user, message }) {
 		<div className="flex mb-4">
 
 			{/* Se o utilizador recebido por parametro for igual ao que está a usar a aplicação */}	
-			{user === userLoggedIn.email ? (
+			{user === userLoggedIn.uid ? (
 
 				//então as mensagens enviadas por ele irão ser exibidas no lado direito com o fundo azul
 				<div className="ml-auto bg-blue-500 rounded-full text-white">
