@@ -499,7 +499,7 @@ function PublicChat() {
     e.preventDefault();
     
     //obtem dados do utilizador
-    
+    const {email} = auth.currentUser;
     
     //tenta adicionar os dados necessários na base de dados
     try {
@@ -507,6 +507,7 @@ function PublicChat() {
       await addDoc(collection(db, "messages"), {
         text: formValue,
         uid: user.uid,
+        email,
         timestamp: serverTimestamp(),
       });
 
