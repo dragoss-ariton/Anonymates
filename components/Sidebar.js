@@ -221,7 +221,7 @@ function Sidebar() {
           <CgMoreO className=" cursor-pointer w-10 h-10 space-y-2"/>
           
           {/* Botão chat publico */}
-          <button> Chat Publico </button></div>
+          <button> Chat público </button></div>
           
           <div>⠀</div>
           
